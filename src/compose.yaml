@@ -4,14 +4,28 @@ services:
   catalogdb:
     image: postgres
 
+  basketdb:
+    image: postgres
+
+  distributedcache:
+    image: redis
+  
+  messagebroker:
+    image: rabbitmq:management
+
   catalog.api:
     image: catalogapi
     build:
       context: .
       dockerfile: Services/Catalog/Catalog.API/Dockerfile
-    ports:
-      - 8080:8080
-      - 8081:8081
+  basket.api:
+    image: basketapi
+    build:
+      context: .
+      dockerfile: Services/Basket/Basket.API/Dockerfile
+
 
 volumes:
   postgres_catalog:
+  postgres_basket:
+
