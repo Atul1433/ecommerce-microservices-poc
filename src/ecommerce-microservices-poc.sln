@@ -9,31 +9,31 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{98
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{C91C1CF1-1625-0789-F869-53D87D6277BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.API", "src\Services\Catalog\Catalog.API\Catalog.API.csproj", "{2577D5E5-EA8A-BC2D-48B9-5FCA0BB92918}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.API", "Services\Catalog\Catalog.API\Catalog.API.csproj", "{2577D5E5-EA8A-BC2D-48B9-5FCA0BB92918}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{90298CBA-BD6F-3A0A-69D5-97CAD7B05E7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks", "src\BuildingBlocks\BuildingBlocks\BuildingBlocks.csproj", "{E30F7F4A-B4D2-4F86-B949-2CC1C83E08B5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks", "BuildingBlocks\BuildingBlocks\BuildingBlocks.csproj", "{E30F7F4A-B4D2-4F86-B949-2CC1C83E08B5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basket", "Basket", "{6C0557C3-B1C9-A54D-46F8-F4FBBDE30E30}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BASKET.API", "src\Services\Basket\BASKET.API\BASKET.API.csproj", "{586EA237-FB2C-48D7-967C-64B0DF86F4E3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BASKET.API", "Services\Basket\BASKET.API\BASKET.API.csproj", "{586EA237-FB2C-48D7-967C-64B0DF86F4E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks.Messaging", "src\BuildingBlocks\BuildingBlocks.Messaging\BuildingBlocks.Messaging.csproj", "{E06218E8-682A-4AF7-8EE4-FECE47DBDFA7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks.Messaging", "BuildingBlocks\BuildingBlocks.Messaging\BuildingBlocks.Messaging.csproj", "{E06218E8-682A-4AF7-8EE4-FECE47DBDFA7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Discount", "Discount", "{EEA4A782-341D-6440-FC22-D64D0B11E3C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discount.Grpc", "src\Services\Discount\Discount.Grpc\Discount.Grpc.csproj", "{E6BBD7FE-9B4A-48F3-869E-DD9CA83914B2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discount.Grpc", "Services\Discount\Discount.Grpc\Discount.Grpc.csproj", "{E6BBD7FE-9B4A-48F3-869E-DD9CA83914B2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ordering", "Ordering", "{D3BAB01C-7F3F-8576-96BE-8BE70C9B9915}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.API", "src\Services\Ordering\Ordering.API\Ordering.API.csproj", "{A831DDD9-8C4E-40F0-8D67-922C9A19E257}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.API", "Services\Ordering\Ordering.API\Ordering.API.csproj", "{A831DDD9-8C4E-40F0-8D67-922C9A19E257}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Application", "src\Services\Ordering\Ordering.Application\Ordering.Application.csproj", "{68B43DD7-6280-415F-873D-F547D9D0013F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Application", "Services\Ordering\Ordering.Application\Ordering.Application.csproj", "{68B43DD7-6280-415F-873D-F547D9D0013F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Domain", "src\Services\Ordering\Ordering.Domain\Ordering.Domain.csproj", "{C0D6E9A9-D811-458F-87AA-CD3A762C4B6A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Domain", "Services\Ordering\Ordering.Domain\Ordering.Domain.csproj", "{C0D6E9A9-D811-458F-87AA-CD3A762C4B6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Infrastructure", "src\Services\Ordering\Ordering.Infrastructure\Ordering.Infrastructure.csproj", "{16C887D3-8EC1-47DB-A70A-494CCD72CB70}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Infrastructure", "Services\Ordering\Ordering.Infrastructure\Ordering.Infrastructure.csproj", "{16C887D3-8EC1-47DB-A70A-494CCD72CB70}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
