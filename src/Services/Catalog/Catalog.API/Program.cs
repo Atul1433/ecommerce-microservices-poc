@@ -16,6 +16,7 @@ builder.Services.AddValidatorsFromAssembly(assembly);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddCarter();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 builder.Services.AddMarten(opts =>
 {

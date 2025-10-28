@@ -16,7 +16,7 @@ public class CreateProductCommandValidator : AbstractValidator<CreateProductComm
 }
 
 public class CreateProductCommandHandler
-    (IDocumentSession session)
+    (IProductRepository repository)
     : ICommandHandler<CreateProductCommand, CreateProductResult>
 {
     public async Task<CreateProductResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
@@ -33,12 +33,11 @@ public class CreateProductCommandHandler
             ImageFile = command.ImageFile,
             Price = command.Price
         };
-        
+
         //save to database
-        session.Store(product);
-        await session.SaveChangesAsync(cancellationToken);
+         var productId = await repository.SaveProductAsync(product, cancellationToken);
 
         //return result
-        return new CreateProductResult(product.Id);
+        return new CreateProductResult(productId);
     }
 }
