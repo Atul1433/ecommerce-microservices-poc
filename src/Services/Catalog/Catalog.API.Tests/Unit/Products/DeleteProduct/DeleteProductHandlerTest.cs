@@ -4,13 +4,13 @@ using Catalog.API.Products.DeleteProduct;
 namespace Catalog.API.Tests.Unit.Products.DeleteProduct;
 public class DeleteProductHandlerTests
 {
-    private readonly Mock<IDocumentSession> _mockSession;
+    private readonly Mock<IProductRepository> _mockRepository;
     private readonly DeleteProductCommandHandler _handler;
 
     public DeleteProductHandlerTests()
     {
-        _mockSession = new Mock<IDocumentSession>();
-        _handler = new DeleteProductCommandHandler(_mockSession.Object);
+        _mockRepository = new Mock<IProductRepository>();
+        _handler = new DeleteProductCommandHandler(_mockRepository.Object);
     }
 
     [Fact]
@@ -20,9 +20,9 @@ public class DeleteProductHandlerTests
         // Arrange
         var productId = Guid.NewGuid();
 
-        _mockSession.Setup(s => s.Delete<Product>(productId));
-        _mockSession.Setup(s => s.SaveChangesAsync(It.IsAny<CancellationToken>()))
-                    .Returns(Task.CompletedTask);
+        _mockRepository.Setup(r => r.DeleteProductAsync(It.IsAny<Guid>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
+        
 
         var command = new DeleteProductCommand(productId);
 
@@ -32,8 +32,7 @@ public class DeleteProductHandlerTests
         // Assert
         result.Should().NotBeNull();
         result.IsSuccess.Should().BeTrue();
+        _mockRepository.Verify(r => r.DeleteProductAsync(productId, It.IsAny<CancellationToken>()), Times.Once);
 
-        _mockSession.Verify(s => s.Delete<Product>(productId), Times.Once);
-        _mockSession.Verify(s => s.SaveChangesAsync(It.IsAny<CancellationToken>()), Times.Once);
-    }
+   }
 }

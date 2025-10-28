@@ -4,3 +4,4 @@ global using Moq;
 global using Marten;
 global using Bogus;
 global using Catalog.API.Models;
+global using Catalog.API.Data;

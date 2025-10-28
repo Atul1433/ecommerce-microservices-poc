@@ -2,13 +2,13 @@ namespace Catalog.API.Tests.Unit.Products.CreateProduct;
 
 public class CreateProductHandlerTests
 {
-    private readonly Mock<IDocumentSession> _mockSession;
+    private readonly Mock<IProductRepository> _mockRepository;
     private readonly CreateProductCommandHandler _handler;
     private readonly Faker<CreateProductCommand> _commandFaker;
     public CreateProductHandlerTests()
     {
-        _mockSession = new Mock<IDocumentSession>();
-        _handler = new CreateProductCommandHandler(_mockSession.Object);
+        _mockRepository = new Mock<IProductRepository>();
+        _handler = new CreateProductCommandHandler(_mockRepository.Object);
         // Setup Bogus to generate fake CreateProductCommand
         _commandFaker = new Faker<CreateProductCommand>()
             .CustomInstantiator(f => new CreateProductCommand(
@@ -33,32 +33,27 @@ public class CreateProductHandlerTests
         //     Price: 99.99M
         // );
         var command = _commandFaker.Generate();
-        _mockSession.Setup(s => s.Store(It.IsAny<Product[]>()))
-        .Callback<Product[]>(products =>
-        {
-            foreach (var p in products)
-            {
-                p.Id = Guid.NewGuid(); // simulate ID assignment
-            }
-        });
-        _mockSession.Setup(s => s.SaveChangesAsync(It.IsAny<CancellationToken>()))
-            .Returns(Task.CompletedTask);
+         var fakeProductId = Guid.NewGuid();
+
+       _mockRepository
+                .Setup(r => r.SaveProductAsync(It.IsAny<Product>(), It.IsAny<CancellationToken>()))
+                .ReturnsAsync(fakeProductId);
 
         // Act
         var result = await _handler.Handle(command, CancellationToken.None);
-
         // Assert
-        result.Should().NotBeNull();
-        result.Id.Should().NotBeEmpty();
+            result.Should().NotBeNull();
+            result.Id.Should().NotBeEmpty();
 
-        _mockSession.Verify(s => s.Store(It.Is<Product>(p =>
-            p.Name == command.Name &&
-            p.Category == command.Category &&
-            p.Description == command.Description &&
-            p.ImageFile == command.ImageFile &&
-            p.Price == command.Price
-        )), Times.Once);
+            _mockRepository.Verify(r => r.SaveProductAsync(It.Is<Product>(p =>
+                p.Name == command.Name &&
+                p.Category == command.Category &&
+                p.Description == command.Description &&
+                p.ImageFile == command.ImageFile &&
+                p.Price == command.Price
+            ), It.IsAny<CancellationToken>()), Times.Once);
 
-        _mockSession.Verify(s => s.SaveChangesAsync(It.IsAny<CancellationToken>()), Times.Once);
-    }
+            _mockRepository.Verify(r => r.SaveProductAsync(It.IsAny<Product>(), It.IsAny<CancellationToken>()), Times.Once);
+
+        }
 }
