@@ -16,6 +16,9 @@ services:
   
   messagebroker:
     image: rabbitmq:3-management
+  
+  pgadmin:
+    image: dpage/pgadmin4
 
   catalog.api:
     image: catalogapi
@@ -45,4 +48,5 @@ services:
 volumes:
   postgres_catalog:
   postgres_basket:
+  pgadmin_data:
 
