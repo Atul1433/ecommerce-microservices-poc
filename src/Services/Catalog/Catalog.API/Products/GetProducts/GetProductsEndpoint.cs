@@ -1,7 +1,24 @@
+using Catalog.API.Models.Dtos;
+
 namespace Catalog.API.Products.GetProducts;
 
-public record GetProductsRequest(int? PageNumber = 1, int? PageSize = 10);
-public record GetProductsResponse(IEnumerable<Product> Products);
+public record GetProductsRequest(
+    int? PageNumber = 1,
+    int? PageSize = 10,
+    string? Sort = null,
+    string? Search = null,
+    string? Brand = null,
+    string? Category = null,
+    decimal? MinPrice = null,
+    decimal? MaxPrice = null,
+    bool? IsFeatured = null);
+
+public record GetProductsResponse(
+    IEnumerable<ProductDto> Products,
+    int PageIndex,
+    int PageSize,
+    int Count,
+    int TotalCount);
 
 public class GetProductsEndpoint : ICarterModule
 {
@@ -21,6 +38,6 @@ public class GetProductsEndpoint : ICarterModule
         .Produces<GetProductsResponse>(StatusCodes.Status200OK)
         .ProducesProblem(StatusCodes.Status400BadRequest)
         .WithSummary("Get Products")
-        .WithDescription("Get Products");
+        .WithDescription("Get Products with filtering, sorting and pagination");
     }
 }
