@@ -10,7 +10,7 @@ public class GetProductByCategoryQueryHandler
 {
     public async Task<GetProductByCategoryResult> Handle(GetProductByCategoryQuery query, CancellationToken cancellationToken)
     {
-        var products = await repository.GetProductsByCatagoryAsync(query.Category);
+        var products = await repository.GetProductsByCategoryAsync(query.Category);
 
         return new GetProductByCategoryResult(products);
     }
